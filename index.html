@@ -4,8 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Альфа Банк — Заработайте 750 ₽</title>
-
-  <!-- Встроенный SVG как favicon -->
   <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 50"><path clip-rule="evenodd" d="M0 49.982v-6.825h32.61v6.825H0zm11.646-28.764h9.064L16.39 7.526h-.17l-4.573 13.692h-.001zm10.587-16.22l9.615 28.887h-7.115l-2.16-6.866H9.698l-2.33 6.867H.679l10.09-28.887C11.746 2.197 12.887 0 16.559 0s4.744 2.206 5.674 4.999v-.001z" fill="%23ef3124" fill-rule="evenodd"/></svg>' />
 
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -32,7 +30,16 @@
     .slide-in-left.visible { opacity: 1; transform: translateX(0); }
     .flying-smile { position: absolute; top: -10%; opacity: 0.05; animation: fly 22s linear infinite; pointer-events: none; }
     @keyframes fly { 0% { transform: translate(-10%,0) rotate(0deg); } 50% { transform: translate(110vw,50vh) rotate(180deg); } 100% { transform: translate(-10%,100vh) rotate(360deg); } }
-    .card-img { background-color: transparent; } /* убираем белую обводку у PNG */
+    
+    /* ИСПРАВЛЕНИЯ ДЛЯ УДАЛЕНИЯ БЕЛОЙ РАМКИ */
+    .card-img { 
+      background-color: transparent; 
+      box-shadow: none !important; /* Убираем тень */
+      border: none !important; /* Убираем границу */
+    }
+    .card-container {
+      background: transparent !important; /* Прозрачный фон контейнера */
+    }
 
     @media (max-width: 768px) {
       h1 { font-size: 1.9rem !important; }
@@ -44,12 +51,11 @@
   </style>
 </head>
 <body>
-  <!-- Летающие смайлы -->
   <img src="smile.png" class="flying-smile w-20" style="animation-delay:0s; left:10%;">
   <img src="smile.png" class="flying-smile w-24" style="animation-delay:6s; left:70%; animation-duration:26s;">
   <img src="smile.png" class="flying-smile w-16" style="animation-delay:3s; left:40%; animation-duration:20s;">
 
-  <!-- Хедер с логотипом -->
+
   <header class="flex items-center justify-between px-6 lg:px-20 py-4">
     <a href="https://alfabank.ru" target="_blank" class="text-red-600 hover:text-red-700">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 50" class="h-10 lg:h-12 w-auto cursor-pointer transition-transform duration-200 hover:scale-105">
@@ -58,11 +64,11 @@
     </a>
   </header>
 
-  <!-- Главный контент -->
+
   <main class="flex-grow flex items-center justify-center px-6 py-10 lg:py-20">
     <section class="max-w-5xl w-full bg-white rounded-3xl shadow-xl flex flex-col lg:flex-row overflow-hidden border border-gray-100">
-      <div class="lg:w-1/2 bg-gradient-to-br from-gray-50 to-white flex items-center justify-center p-10 slide-in-left">
-        <img src="card.png" alt="Карта Альфа-Банка" class="card-img max-w-xs lg:max-w-sm rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105" />
+      <div class="lg:w-1/2 card-container flex items-center justify-center p-10 slide-in-left">
+        <img src="card.png" alt="Карта Альфа-Банка" class="card-img max-w-xs lg:max-w-sm rounded-xl transform transition-transform duration-300 hover:scale-105" />
       </div>
       <div class="lg:w-1/2 p-10 lg:p-14 flex flex-col justify-center text-center lg:text-left bg-white fade-in">
         <h1 id="animatedText" class="text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight mb-4">Заработайте 750 рублей одной кнопкой</h1>
@@ -73,7 +79,7 @@
     </section>
   </main>
 
-  <!-- Футер -->
+
   <footer class="text-center text-gray-600 text-sm py-4">
     <p>© 2025 Все права защищены. <a href="dog.html" class="text-red-600 hover:underline">Договор оферты</a></p>
   </footer>
@@ -83,7 +89,7 @@
     const textElement = document.getElementById('animatedText');
     const text1 = 'Заработайте 750 рублей одной кнопкой';
     const text2 = 'Это твой шанс заработать 750 рублей';
-	const text3 = 'Это же халявные бабки!';
+    const text3 = 'Это же халявные бабки!';
     let currentText = text1;
 
     function typeEffect(newText) {
