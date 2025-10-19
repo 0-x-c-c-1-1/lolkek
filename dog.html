@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Договор оферты — Альфа Банк</title>
+
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 50"><path clip-rule="evenodd" d="M0 49.982v-6.825h32.61v6.825H0zm11.646-28.764h9.064L16.39 7.526h-.17l-4.573 13.692h-.001zm10.587-16.22l9.615 28.887h-7.115l-2.16-6.866H9.698l-2.33 6.867H.679l10.09-28.887C11.746 2.197 12.887 0 16.559 0s4.744 2.206 5.674 4.999v-.001z" fill="%23ef3124" fill-rule="evenodd"/></svg>' />
+
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    html, body { max-width: 100vw; }
+    body {
+      background: linear-gradient(180deg, #fff 0%, #f7f7f7 100%);
+      overflow-x: hidden;
+      user-select: none;
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header { background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 20; }
+    footer { background: #fff; box-shadow: 0 -1px 4px rgba(0,0,0,0.05); margin-top: auto; }
+    .btn-red { background-color: #ef3124; transition: all 0.3s ease; }
+    .btn-red:hover { background-color: #d11d17; transform: translateY(-2px); }
+    .btn-large { padding: 16px 32px; border-radius: 14px; font-weight: 700; font-size: 1.1rem; }
+    .fade-in { opacity: 0; transform: translateY(10px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .flying-smile { position: absolute; top: -10%; opacity: 0.05; animation: fly 22s linear infinite; pointer-events: none; }
+    @keyframes fly { 0% { transform: translate(-10%,0) rotate(0deg); } 50% { transform: translate(110vw,50vh) rotate(180deg); } 100% { transform: translate(-10%,100vh) rotate(360deg); } }
+    
+    /* Стили для договора */
+    .contract-container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+    
+    .contract-content {
+      padding: 2rem;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    .contract-content h1 {
+      color: #ef3124;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .contract-content h2 {
+      color: #1a1a1a;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .contract-content p {
+      margin-bottom: 1rem;
+    }
+    
+    .contract-content ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .contract-content li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #ef3124;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      color: #d11d17;
+      transform: translateX(-5px);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 1.9rem !important; }
+      .btn-large { width: 100%; }
+      .contract-container { max-height: 60vh; }
+      .contract-content { padding: 1.5rem; }
+      header svg { height: 40px !important; }
+      section { overflow-x: hidden; }
+    }
+  </style>
+</head>
+<body>
+  <img src="smile.png" class="flying-smile w-20" style="animation-delay:0s; left:10%;">
+  <img src="smile.png" class="flying-smile w-24" style="animation-delay:6s; left:70%; animation-duration:26s;">
+  <img src="smile.png" class="flying-smile w-16" style="animation-delay:3s; left:40%; animation-duration:20s;">
+
+  <header class="flex items-center justify-between px-6 lg:px-20 py-4">
+    <a href="https://alfabank.ru" target="_blank" class="text-red-600 hover:text-red-700">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 50" class="h-10 lg:h-12 w-auto cursor-pointer transition-transform duration-200 hover:scale-105">
+        <path clip-rule="evenodd" d="M0 49.982v-6.825h32.61v6.825H0zm11.646-28.764h9.064L16.39 7.526h-.17l-4.573 13.692h-.001zm10.587-16.22l9.615 28.887h-7.115l-2.16-6.866H9.698l-2.33 6.867H.679l10.09-28.887C11.746 2.197 12.887 0 16.559 0s4.744 2.206 5.674 4.999v-.001z" fill="currentColor" fill-rule="evenodd"></path>
+      </svg>
+    </a>
+  </header>
+
+  <main class="flex-grow flex items-center justify-center px-6 py-10 lg:py-12">
+    <section class="max-w-4xl w-full fade-in">
+      <div class="text-center mb-8">
+        <a href="index.html" class="back-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+          Вернуться назад
+        </a>
+      </div>
+      
+      <div class="contract-container">
+        <div class="contract-content">
+          <h1>ДОГОВОР ПУБЛИЧНОЙ ОФЕРТЫ</h1>
+          <h2>1. Общие положения</h2>
+          <p>1.1. Настоящий Договор является официальным предложением (публичной офертой) Акционерного коммерческого банка «АЛЬФА-БАНК» (публичное акционерное общество) (далее — «Банк») заключить с любым физическим лицом, которое отзовется на оферту (далее — «Клиент»), договор об использовании банковской карты на условиях, изложенных ниже.</p>
+          <p>1.2. В соответствии с пунктом 2 статьи 437 Гражданского кодекса Российской Федерации, в случае принятия изложенных ниже условий и выполнения необходимых действий, лицо, совершившее акцепт этой оферты, становится Клиентом (в соответствии с пунктом 3 статьи 438 Гражданского кодекса Российской Федерации акцепт оферты равносилен заключению договора на условиях, изложенных в оферте).</p>
+          
+          <h2>2. Термины и определения</h2>
+          <p>2.1. Банковская карта — платежная карта, эмитированная Банком, являющаяся инструментом для совершения операций с банковским счетом Клиента.</p>
+          <p>2.2. Счет Клиента — банковский счет, открытый Клиенту в Банке для осуществления операций с использованием банковской карты.</p>
+          <p>2.3. Акцепт оферты — полное и безоговорочное принятие Клиентом условий настоящего Договора, осуществляемое путем совершения действий, предусмотренных в разделе 3 настоящего Договора.</p>
+          
+          <h2>3. Порядок акцепта оферты</h2>
+          <p>3.1. Акцептом настоящей оферты является выполнение Клиентом следующих действий:</p>
+          <ul>
+            <li>Заполнение заявки на получение банковской карты на сайте Банка или у Партнера Банка;</li>
+            <li>Согласие с условиями настоящего Договора путем проставления соответствующей отметки в заявке;</li>
+            <li>Получение банковской карты и ее активация в установленном Банком порядке.</li>
+          </ul>
+          <p>3.2. Совершение Клиентом действий по акцепту оферты означает, что Клиент полностью согласен со всеми условиями настоящего Договора.</p>
+          
+          <h2>4. Условия получения бонуса</h2>
+          <p>4.1. Бонус в размере 750 (семьсот пятьдесят) рублей начисляется на счет Клиента при выполнении следующих условий:</p>
+          <ul>
+            <li>Оформление заявки на получение банковской карты через сайт-партнер Банка;</li>
+            <li>Получение и активация карты в течение 30 календарных дней с момента одобрения заявки;</li>
+            <li>Совершение первой операции по карте на сумму не менее 500 (пятьсот) рублей в течение 30 календарных дней с момента активации карты.</li>
+          </ul>
+          <p>4.2. Бонус зачисляется на счет Клиента в течение 5 рабочих дней с момента выполнения всех условий, указанных в п. 4.1.</p>
+          <p>4.3. Бонус не начисляется в случае, если Клиент ранее уже получал бонус по аналогичным акциям Банка.</p>
+          
+          <h2>5. Права и обязанности сторон</h2>
+          <p>5.1. Банк обязуется:</p>
+          <ul>
+            <li>Обеспечить выпуск и выдачу банковской карты Клиенту при положительном рассмотрении заявки;</li>
+            <li>Обеспечить функционирование системы обслуживания банковских карт;</li>
+            <li>Начислить бонус при выполнении Клиентом условий, указанных в разделе 4 настоящего Договора.</li>
+          </ul>
+          <p>5.2. Клиент обязуется:</p>
+          <ul>
+            <li>Использовать банковскую карту в соответствии с условиями настоящего Договора и законодательством Российской Федерации;</li>
+            <li>Соблюдать правила безопасности при использовании банковской карты;</li>
+            <li>Незамедлительно уведомлять Банк об утере или краже карты.</li>
+          </ul>
+          
+          <h2>6. Срок действия договора</h2>
+          <p>6.1. Настоящий Договор вступает в силу с момента акцепта оферты Клиентом и действует до полного исполнения Сторонами своих обязательств.</p>
+          
+          <h2>7. Реквизиты Банка</h2>
+          <p>Акционерный коммерческий банк «АЛЬФА-БАНК» (публичное акционерное общество)</p>
+          <p>ИНН 7728168971</p>
+          <p>ОГРН 1027700067328</p>
+          <p>Адрес: 107078, Москва, ул. Каланчевская, д. 27</p>
+          <p>Телефон: 8-800-200-00-00 (бесплатно по России)</p>
+        </div>
+      </div>
+      
+      <div class="text-center mt-8">
+        <button onclick="window.print()" class="btn-red text-white py-3 px-6 rounded-lg font-medium shadow-md hover:shadow-lg transition-all">Распечатать договор</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center text-gray-600 text-sm py-4">
+    <p>© 2025 Все права защищены. Акционерный коммерческий банк «АЛЬФА-БАНК» (ПАО)</p>
+  </footer>
+
+  <script>
+    window.addEventListener('load', ()=>{
+      document.querySelector('.fade-in').classList.add('visible');
+    });
+  </script>
+</body>
+</html>
