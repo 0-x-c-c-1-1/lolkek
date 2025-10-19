@@ -31,14 +31,13 @@
     .flying-smile { position: absolute; top: -10%; opacity: 0.05; animation: fly 22s linear infinite; pointer-events: none; }
     @keyframes fly { 0% { transform: translate(-10%,0) rotate(0deg); } 50% { transform: translate(110vw,50vh) rotate(180deg); } 100% { transform: translate(-10%,100vh) rotate(360deg); } }
     
-    /* ИСПРАВЛЕНИЯ ДЛЯ УДАЛЕНИЯ БЕЛОЙ РАМКИ */
     .card-img { 
       background-color: transparent; 
-      box-shadow: none !important; /* Убираем тень */
-      border: none !important; /* Убираем границу */
+      box-shadow: none !important; 
+      border: none !important; 
     }
     .card-container {
-      background: transparent !important; /* Прозрачный фон контейнера */
+      background: transparent !important;
     }
 
     @media (max-width: 768px) {
@@ -124,3 +123,4 @@
   </script>
 </body>
 </html>
+
