@@ -1,129 +1,187 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Альфа Банк — Заработайте 750 ₽</title>
-  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 50"><path clip-rule="evenodd" d="M0 49.982v-6.825h32.61v6.825H0zm11.646-28.764h9.064L16.39 7.526h-.17l-4.573 13.692h-.001zm10.587-16.22l9.615 28.887h-7.115l-2.16-6.866H9.698l-2.33 6.867H.679l10.09-28.887C11.746 2.197 12.887 0 16.559 0s4.744 2.206 5.674 4.999v-.001z" fill="%23ef3124" fill-rule="evenodd"/></svg>' />
-
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    html, body { max-width: 100vw; }
-    body {
-      background: linear-gradient(180deg, #fff 0%, #f7f7f7 100%);
-      overflow-x: hidden;
-      user-select: none;
-      font-family: 'Inter', sans-serif;
-      color: #1a1a1a;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Список игроков NLYS [ CROT ]</title>
+<style>
+  body {
+    background-color: #000;
+    color: #00ff66;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  h1 {
+    text-shadow: 0 0 15px #00ff66;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    text-align: center;
+  }
+  .table-container {
+    width: 95%;
+    max-width: 800px;
+    overflow-x: auto;
+    border: 1px solid #00ff66;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,255,100,0.3);
+    background-color: rgba(0,0,0,0.85);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border-bottom: 1px solid #00ff66;
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: rgba(0,255,100,0.1);
+  }
+  tr:hover {
+    background-color: rgba(0,255,100,0.15);
+  }
+  .controls {
+    margin: 15px 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  button, input {
+    background-color: #001a00;
+    color: #00ff66;
+    border: 1px solid #00ff66;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-family: inherit;
+  }
+  button:hover {
+    background-color: #00ff66;
+    color: #000;
+    cursor: pointer;
+  }
+  @media (max-width: 600px) {
+    th, td {
+      font-size: 0.9em;
+      padding: 8px;
     }
-    header { background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 20; }
-    footer { background: #fff; box-shadow: 0 -1px 4px rgba(0,0,0,0.05); margin-top: auto; }
-    .btn-red { background-color: #ef3124; transition: all 0.3s ease; }
-    .btn-red:hover { background-color: #d11d17; transform: translateY(-2px); }
-    .btn-large { padding: 16px 32px; border-radius: 14px; font-weight: 700; font-size: 1.1rem; }
-    .fade-in { opacity: 0; transform: translateY(10px); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    .slide-in-left { opacity: 0; transform: translateX(-20px); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .slide-in-left.visible { opacity: 1; transform: translateX(0); }
-    .flying-smile { position: absolute; top: -10%; opacity: 0.05; animation: fly 22s linear infinite; pointer-events: none; }
-    @keyframes fly { 0% { transform: translate(-10%,0) rotate(0deg); } 50% { transform: translate(110vw,50vh) rotate(180deg); } 100% { transform: translate(-10%,100vh) rotate(360deg); } }
-    
-    .card-img { 
-      background-color: transparent; 
-      box-shadow: none !important; 
-      border: none !important; 
+    h1 {
+      font-size: 1.4em;
     }
-    .card-container {
-      background: transparent !important;
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 1.9rem !important; }
-      .btn-large { width: 100%; }
-      .card-img { max-width: 80%; margin-top: 1rem; }
-      header svg { height: 40px !important; }
-      section { overflow-x: hidden; }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <img src="smile.png" class="flying-smile w-20" style="animation-delay:0s; left:10%;">
-  <img src="smile.png" class="flying-smile w-24" style="animation-delay:6s; left:70%; animation-duration:26s;">
-  <img src="smile.png" class="flying-smile w-16" style="animation-delay:3s; left:40%; animation-duration:20s;">
-
-
-  <header class="flex items-center justify-between px-6 lg:px-20 py-4">
-    <a href="https://alfabank.ru" target="_blank" class="text-red-600 hover:text-red-700">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 50" class="h-10 lg:h-12 w-auto cursor-pointer transition-transform duration-200 hover:scale-105">
-        <path clip-rule="evenodd" d="M0 49.982v-6.825h32.61v6.825H0zm11.646-28.764h9.064L16.39 7.526h-.17l-4.573 13.692h-.001zm10.587-16.22l9.615 28.887h-7.115l-2.16-6.866H9.698l-2.33 6.867H.679l10.09-28.887C11.746 2.197 12.887 0 16.559 0s4.744 2.206 5.674 4.999v-.001z" fill="currentColor" fill-rule="evenodd"></path>
-      </svg>
-    </a>
-  </header>
-
-
-  <main class="flex-grow flex items-center justify-center px-6 py-10 lg:py-20">
-    <section class="max-w-5xl w-full bg-white rounded-3xl shadow-xl flex flex-col lg:flex-row overflow-hidden border border-gray-100">
-      <div class="lg:w-1/2 card-container flex items-center justify-center p-10 slide-in-left">
-        <img src="card.png" alt="Карта Альфа-Банка" class="card-img max-w-xs lg:max-w-sm rounded-xl transform transition-transform duration-300 hover:scale-105" />
-      </div>
-      <div class="lg:w-1/2 p-10 lg:p-14 flex flex-col justify-center text-center lg:text-left bg-white fade-in">
-        <h1 id="animatedText" class="text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight mb-4">Заработайте 750 рублей одной кнопкой</h1>
-        <p class="text-gray-600 mb-8 text-lg">Оформите карту Альфа-Банка и получите бонус. Всё просто, безопасно и быстро.</p>
-        <button id="applyBtn" class="btn-large btn-red text-white shadow-lg focus:outline-none focus:ring-4 focus:ring-red-200 transition mx-auto lg:mx-0">Оформить карту</button>
-        <p class="mt-6 text-sm text-gray-500">* Условия получения бонуса указаны в договоре. После нажатия на кнопку вас перекинет на страницу оформления карты.</p>
-      </div>
-    </section>
-  </main>
-
-
-  <footer class="text-center text-gray-600 text-sm py-4">
-    <p>© 2025 Все права защищены. <a href="dog.html" class="text-red-600 hover:underline">Договор оферты</a></p>
-  </footer>
-
-  <script>
-    const btn = document.getElementById('applyBtn');
-    const textElement = document.getElementById('animatedText');
-    const text1 = 'Заработайте 750 рублей одной кнопкой';
-    const text2 = 'Это твой шанс заработать 750 рублей';
-    const text3 = 'Это же халявные бабки!';
-    let currentText = text1;
-
-    function typeEffect(newText) {
-      let i=0; textElement.textContent='';
-      const typing=setInterval(()=>{
-        textElement.textContent+=newText[i]; i++;
-        if(i>=newText.length) clearInterval(typing);
-      },60);
-    }
-
-    function eraseEffect(callback) {
-      let text=textElement.textContent;
-      const erasing=setInterval(()=>{
-        text=text.slice(0,-1); textElement.textContent=text;
-        if(text.length===0){ clearInterval(erasing); callback(); }
-      },40);
-    }
-
-    setInterval(()=>{
-      eraseEffect(()=>{
-        currentText = currentText===text1 ? text2 : text1;
-        typeEffect(currentText);
-      });
-    },7000);
-
-    btn.addEventListener('click', ()=>{ window.open('https://alfa.me/0EIlpR'); });
-
-    window.addEventListener('load', ()=>{
-      document.querySelector('.fade-in').classList.add('visible');
-      document.querySelector('.slide-in-left').classList.add('visible');
-    });
-  </script>
+  <h1>💻 Список игроков и их Discord 💬</h1>
+  <div class="controls">
+    <input type="text" id="search" placeholder="Поиск..." onkeyup="filterTable()">
+    <button onclick="copyTable()">Копировать</button>
+    <button onclick="exportCSV()">Экспорт CSV</button>
+  </div>
+  <div class="table-container">
+    <table id="playerTable">
+      <thead>
+        <tr>
+          <th>Игровые ники</th>
+          <th>Discord ники</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>prololro, IIuoneR_Original</td><td>523516316732</td></tr>
+        <tr><td>TheSheaker</td><td>Шекер</td></tr>
+        <tr><td>Slutgon42</td><td>Шекер</td></tr>
+        <tr><td>B3st1k, b3st1k_2, B3st1kStash, B3st1kStash2, B3st1kFireworks, B3st1kPodmostki, 0xCrash, Sudno, HAbJlIOdATEJlb</td><td>✞ 𓆩₲ꝋꞡⱥ𓆪 ✞</td></tr>
+        <tr><td>DASA_229_DASA, DarkMarket</td><td>✞ 𓆩₲ꝋꞡⱥ𓆪 ✞</td></tr>
+        <tr><td>dydykaya</td><td>ded</td></tr>
+        <tr><td>Oblivion_PvP_Bot, CKAMEP, ABTOPUTET, Cpvp0wner, kiberbuling, AntonPolikarpov6, playCODE80noDAPL, Drahok, AutoPearl, B0P0HA, TPAXOK, Kia, walleWTF, vixxO8, V_I_X_X_0_8, nlys_account1–8</td><td>k-k-kkiber? ★</td></tr>
+        <tr><td>Sperman, Fisting_Master, Sweety_Boy, DEGRODANT, Thunder_Shop, canUsee</td><td>ded</td></tr>
+        <tr><td>org_ru_test, org_ru_alt, ntoskrnl, igoshka</td><td>Puparia #ПЛАЧЬ</td></tr>
+        <tr><td>igoshka, igoshka429, 1goshka, igoshka_, igoshka__, IG0SHKA, BIG_RUSSIAN_BOSS, ashka, igashk, womana, womana1, womana2, LEPIT, GigPip</td><td>igoshka</td></tr>
+        <tr><td>goghop, doge_platinum721, goghop1, 10_10105, cumshot, MondayGlock_17, BensonBurnz, 291k</td><td>Puparia #ПЛАЧЬ</td></tr>
+        <tr><td>hxrvestik</td><td>мiтя999</td></tr>
+        <tr><td>nikitadan4pi, lixen1x</td><td>nikitadan4pi</td></tr>
+        <tr><td>zxcbitik</td><td>ЗŷБêĤкØ Ми✖ÃиЛ ПęŦрØßиЧ</td></tr>
+        <tr><td>bobby15490, chelove4ek</td><td>Dead cock</td></tr>
+        <tr><td>Iamsteve67</td><td>Я ребёнок</td></tr>
+        <tr><td>Manager, TOPMO3</td><td>RononoaZoro</td></tr>
+        <tr><td>ThomasShelby</td><td>ThomasShelby</td></tr>
+        <tr><td>daRGO</td><td>Zip</td></tr>
+        <tr><td>CTALIN2000, LENIN3000, ZELENSKY4000, PUTIN1000, ANTON9669, SHABIA9669, MistBear, ItsBear, ItzBear</td><td>Жабя 🐸😺</td></tr>
+        <tr><td>ilik550</td><td>ilik550</td></tr>
+        <tr><td>Strash2b2t, Strash2b2tru, Checkers, CrystalBou</td><td>NEСЛУЧАЙНО-lonix🎃</td></tr>
+        <tr><td>IShowMeat</td><td>@Deleted User</td></tr>
+        <tr><td>KHyaZb, TheShaverma, try_it88, try_itmain, p_p, nofreepst, netry_it, sozialism, Grogu</td><td>Chelover</td></tr>
+        <tr><td>twincc1, twncc_, K4GC</td><td>Павло Онищук</td></tr>
+        <tr><td>DrugQueen</td><td>ClasheR</td></tr>
+        <tr><td>QuatroEspada, TheGreatDoggy, silverhand, Spidey, APP</td><td>Гадание</td></tr>
+        <tr><td>ms_demian</td><td>Greck Feck</td></tr>
+        <tr><td>say0, rsnc</td><td>sayo</td></tr>
+        <tr><td>kickofu, schwarznegger, Minister</td><td>министр</td></tr>
+        <tr><td>tumup, _tumup_, firaceya</td><td>t.me/invokedynamic</td></tr>
+        <tr><td>Heoruzzz</td><td>Батырхан Меирхан Еркебуланулы</td></tr>
+        <tr><td>BypassPidoras</td><td>министр</td></tr>
+        <tr><td>pyzo007</td><td>horble12</td></tr>
+        <tr><td>EquilibriumNigas</td><td>vethaer</td></tr>
+        <tr><td>_vixx08_</td><td>vixx08</td></tr>
+        <tr><td>dert32, Mr_Baff</td><td>ヤギを犯した</td></tr>
+        <tr><td>Speedwagon, GiroyRBLX</td><td>министр</td></tr>
+        <tr><td>iKibeR, ikiber</td><td>iKibeR / мiтя999</td></tr>
+        <tr><td>Pyzonator, dupeakkpyzo, cpvppyzotop1</td><td>vethaer</td></tr>
+        <tr><td>SpeedBypass, ipidor, nugger🤣</td><td>министр</td></tr>
+        <tr><td>BrainBypass</td><td>министр</td></tr>
+        <tr><td>vixx1488, vixx08Border</td><td>викс</td></tr>
+        <tr><td>ministrsinshluhi, hxrvestik, kazahsila</td><td>мiтя999</td></tr>
+        <tr><td>koshmish</td><td>кощмищ</td></tr>
+        <tr><td>ZloyLime, DobriyRusskiy, DobriyRossiyanin, DobriySlavyanin, DobriyPatriot, DobriyChelovek</td><td>ZloyLime</td></tr>
+        <tr><td>DobriyUkrainec, crowtheworst</td><td>Upwardy</td></tr>
+        <tr><td>stroheim</td><td>ᛋᛋ</td></tr>
+        <tr><td>NeverSheker</td><td>Шекер</td></tr>
+        <tr><td>Drahok</td><td>banish</td></tr>
+        <tr><td>omg_non</td><td>Vethaer</td></tr>
+        <tr><td>blyvhywannafly</td><td>Blyvhy</td></tr>
+        <tr><td>EsdeD12, nswp, EsdeD, N0_name228, prost1k336, Gamzik, Gamziik</td><td>crowtheworst</td></tr>
+        <tr><td>Pavel_Durov</td><td>Pavel Durov</td></tr>
+        <tr><td>сок86</td><td>скибиди туалеты ==12==</td></tr>
+      </tbody>
+    </table>
+  </div>
+<script>
+function filterTable() {
+  const input = document.getElementById('search').value.toLowerCase();
+  const rows = document.querySelectorAll('#playerTable tbody tr');
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    row.style.display = text.includes(input) ? '' : 'none';
+  });
+}
+function copyTable() {
+  const range = document.createRange();
+  range.selectNode(document.getElementById('playerTable'));
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  document.execCommand('copy');
+  window.getSelection().removeAllRanges();
+  alert('Таблица скопирована!');
+}
+function exportCSV() {
+  let csv = '';
+  document.querySelectorAll('#playerTable tr').forEach(row => {
+    const cols = Array.from(row.querySelectorAll('th, td')).map(td => '"' + td.innerText.replace(/"/g, '""') + '"');
+    csv += cols.join(',') + '\n';
+  });
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'players_discords.csv';
+  a.click();
+}
+</script>
 </body>
 </html>
-
-
-
-
