@@ -3,19 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Список игроков NLYS [ CROT ]</title>
+<title>Список игроков NLYS [ C R O T ]</title>
 <style>
   body {
-    background-color: #000;
-    color: #00ff66;
-    font-family: 'Courier New', monospace;
     margin: 0;
     padding: 0;
+    font-family: 'Courier New', monospace;
+    background-color: #000;
+    color: #00ff66;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     min-height: 100vh;
+    overflow-x: hidden;
+  }
+  canvas#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.15;
   }
   h1 {
     text-shadow: 0 0 15px #00ff66;
@@ -31,6 +40,7 @@
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0,255,100,0.3);
     background-color: rgba(0,0,0,0.85);
+    margin-bottom: 30px;
   }
   table {
     width: 100%;
@@ -79,89 +89,62 @@
 </style>
 </head>
 <body>
-  <h1>💻 Список игроков и их Discord 💬</h1>
-  <div class="controls">
-    <input type="text" id="search" placeholder="Поиск..." onkeyup="filterTable()">
-    <button onclick="copyTable()">Копировать</button>
-    <button onclick="exportCSV()">Экспорт CSV</button>
-  </div>
-  <div class="table-container">
-    <table id="playerTable">
-      <thead>
-        <tr>
-          <th>Игровые ники</th>
-          <th>Discord ники</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>prololro, IIuoneR_Original</td><td>523516316732</td></tr>
-        <tr><td>TheSheaker</td><td>Шекер</td></tr>
-        <tr><td>Slutgon42</td><td>Шекер</td></tr>
-        <tr><td>B3st1k, b3st1k_2, B3st1kStash, B3st1kStash2, B3st1kFireworks, B3st1kPodmostki, 0xCrash, Sudno, HAbJlIOdATEJlb</td><td>✞ 𓆩₲ꝋꞡⱥ𓆪 ✞</td></tr>
-        <tr><td>DASA_229_DASA, DarkMarket</td><td>✞ 𓆩₲ꝋꞡⱥ𓆪 ✞</td></tr>
-        <tr><td>dydykaya</td><td>ded</td></tr>
-        <tr><td>Oblivion_PvP_Bot, CKAMEP, ABTOPUTET, Cpvp0wner, kiberbuling, AntonPolikarpov6, playCODE80noDAPL, Drahok, AutoPearl, B0P0HA, TPAXOK, Kia, walleWTF, vixxO8, V_I_X_X_0_8, nlys_account1–8</td><td>k-k-kkiber? ★</td></tr>
-        <tr><td>Sperman, Fisting_Master, Sweety_Boy, DEGRODANT, Thunder_Shop, canUsee</td><td>ded</td></tr>
-        <tr><td>org_ru_test, org_ru_alt, ntoskrnl, igoshka</td><td>Puparia #ПЛАЧЬ</td></tr>
-        <tr><td>igoshka, igoshka429, 1goshka, igoshka_, igoshka__, IG0SHKA, BIG_RUSSIAN_BOSS, ashka, igashk, womana, womana1, womana2, LEPIT, GigPip</td><td>igoshka</td></tr>
-        <tr><td>goghop, doge_platinum721, goghop1, 10_10105, cumshot, MondayGlock_17, BensonBurnz, 291k</td><td>Puparia #ПЛАЧЬ</td></tr>
-        <tr><td>hxrvestik</td><td>мiтя999</td></tr>
-        <tr><td>nikitadan4pi, lixen1x</td><td>nikitadan4pi</td></tr>
-        <tr><td>zxcbitik</td><td>ЗŷБêĤкØ Ми✖ÃиЛ ПęŦрØßиЧ</td></tr>
-        <tr><td>bobby15490, chelove4ek</td><td>Dead cock</td></tr>
-        <tr><td>Iamsteve67</td><td>Я ребёнок</td></tr>
-        <tr><td>Manager, TOPMO3</td><td>RononoaZoro</td></tr>
-        <tr><td>ThomasShelby</td><td>ThomasShelby</td></tr>
-        <tr><td>daRGO</td><td>Zip</td></tr>
-        <tr><td>CTALIN2000, LENIN3000, ZELENSKY4000, PUTIN1000, ANTON9669, SHABIA9669, MistBear, ItsBear, ItzBear</td><td>Жабя 🐸😺</td></tr>
-        <tr><td>ilik550</td><td>ilik550</td></tr>
-        <tr><td>Strash2b2t, Strash2b2tru, Checkers, CrystalBou</td><td>NEСЛУЧАЙНО-lonix🎃</td></tr>
-        <tr><td>IShowMeat</td><td>@Deleted User</td></tr>
-        <tr><td>KHyaZb, TheShaverma, try_it88, try_itmain, p_p, nofreepst, netry_it, sozialism, Grogu</td><td>Chelover</td></tr>
-        <tr><td>twincc1, twncc_, K4GC</td><td>Павло Онищук</td></tr>
-        <tr><td>DrugQueen</td><td>ClasheR</td></tr>
-        <tr><td>QuatroEspada, TheGreatDoggy, silverhand, Spidey, APP</td><td>Гадание</td></tr>
-        <tr><td>ms_demian</td><td>Greck Feck</td></tr>
-        <tr><td>say0, rsnc</td><td>sayo</td></tr>
-        <tr><td>kickofu, schwarznegger, Minister</td><td>министр</td></tr>
-        <tr><td>tumup, _tumup_, firaceya</td><td>t.me/invokedynamic</td></tr>
-        <tr><td>Heoruzzz</td><td>Батырхан Меирхан Еркебуланулы</td></tr>
-        <tr><td>BypassPidoras</td><td>министр</td></tr>
-        <tr><td>pyzo007</td><td>horble12</td></tr>
-        <tr><td>EquilibriumNigas</td><td>vethaer</td></tr>
-        <tr><td>_vixx08_</td><td>vixx08</td></tr>
-        <tr><td>dert32, Mr_Baff</td><td>ヤギを犯した</td></tr>
-        <tr><td>Speedwagon, GiroyRBLX</td><td>министр</td></tr>
-        <tr><td>iKibeR, ikiber</td><td>iKibeR / мiтя999</td></tr>
-        <tr><td>Pyzonator, dupeakkpyzo, cpvppyzotop1</td><td>vethaer</td></tr>
-        <tr><td>SpeedBypass, ipidor, nugger🤣</td><td>министр</td></tr>
-        <tr><td>BrainBypass</td><td>министр</td></tr>
-        <tr><td>vixx1488, vixx08Border</td><td>викс</td></tr>
-        <tr><td>ministrsinshluhi, hxrvestik, kazahsila</td><td>мiтя999</td></tr>
-        <tr><td>koshmish</td><td>кощмищ</td></tr>
-        <tr><td>ZloyLime, DobriyRusskiy, DobriyRossiyanin, DobriySlavyanin, DobriyPatriot, DobriyChelovek</td><td>ZloyLime</td></tr>
-        <tr><td>DobriyUkrainec, crowtheworst</td><td>Upwardy</td></tr>
-        <tr><td>stroheim</td><td>ᛋᛋ</td></tr>
-        <tr><td>NeverSheker</td><td>Шекер</td></tr>
-        <tr><td>Drahok</td><td>banish</td></tr>
-        <tr><td>omg_non</td><td>Vethaer</td></tr>
-        <tr><td>blyvhywannafly</td><td>Blyvhy</td></tr>
-        <tr><td>EsdeD12, nswp, EsdeD, N0_name228, prost1k336, Gamzik, Gamziik</td><td>crowtheworst</td></tr>
-        <tr><td>Pavel_Durov</td><td>Pavel Durov</td></tr>
-        <tr><td>сок86</td><td>скибиди туалеты ==12==</td></tr>
-      </tbody>
-    </table>
-  </div>
+<canvas id="matrix"></canvas>
+<h1>💻 Список игроков и их Discord 💬</h1>
+<div class="controls">
+  <input type="text" id="search" placeholder="Поиск..." onkeyup="filterTable()">
+  <button onclick="copyTable()">Копировать</button>
+  <button onclick="exportCSV()">Экспорт CSV</button>
+</div>
+<div class="table-container">
+  <table id="playerTable">
+    <thead>
+      <tr><th>Игровые ники</th><th>Discord ники</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>prololro, IIuoneR_Original</td><td>523516316732</td></tr>
+      <tr><td>TheSheaker</td><td>Шекер</td></tr>
+      <tr><td>Slutgon42</td><td>Шекер</td></tr>
+      <tr><td>B3st1k, b3st1k_2, B3st1kStash, B3st1kStash2, B3st1kFireworks, B3st1kPodmostki, 0xCrash, Sudno, HAbJlIOdATEJlb</td><td>✞ 𓆩₲ꝋꞡⱥ𓆪 ✞</td></tr>
+      <tr><td>DASA_229_DASA, DarkMarket</td><td>✞ 𓆩₲ꝋꞡⱥ𓆪 ✞</td></tr>
+      <tr><td>dydykaya</td><td>ded</td></tr>
+      <tr><td>Oblivion_PvP_Bot, CKAMEP, ABTOPUTET, Cpvp0wner, kiberbuling, AntonPolikarpov6, playCODE80noDAPL, Drahok, AutoPearl, B0P0HA, TPAXOK, Kia, walleWTF, vixxO8, V_I_X_X_0_8, nlys_account1–8</td><td>k-k-kkiber? ★</td></tr>
+    </tbody>
+  </table>
+</div>
 <script>
-function filterTable() {
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+let w, h, cols, ypos;
+function resize(){
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
+  cols=Math.floor(w/20);
+  ypos=new Array(cols).fill(0);
+}
+window.addEventListener('resize', resize);
+resize();
+const letters = 'abcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()<>[]{}\\/|;:.,';
+function matrix(){
+  ctx.fillStyle='rgba(0,0,0,0.05)';
+  ctx.fillRect(0,0,w,h);
+  ctx.fillStyle='rgba(0,255,102,0.9)';
+  ctx.font='14pt monospace';
+  for(let i=0;i<cols;i++){
+    const text=letters.charAt(Math.floor(Math.random()*letters.length));
+    ctx.fillText(text,i*20,ypos[i]*20);
+    if(ypos[i]*20>h && Math.random()>0.975)ypos[i]=0;
+    ypos[i]++;
+  }
+}
+setInterval(matrix,45);
+
+function filterTable(){
   const input = document.getElementById('search').value.toLowerCase();
   const rows = document.querySelectorAll('#playerTable tbody tr');
-  rows.forEach(row => {
-    const text = row.textContent.toLowerCase();
-    row.style.display = text.includes(input) ? '' : 'none';
-  });
+  rows.forEach(row => row.style.display = row.textContent.toLowerCase().includes(input)?'':'none');
 }
-function copyTable() {
+function copyTable(){
   const range = document.createRange();
   range.selectNode(document.getElementById('playerTable'));
   window.getSelection().removeAllRanges();
@@ -170,16 +153,16 @@ function copyTable() {
   window.getSelection().removeAllRanges();
   alert('Таблица скопирована!');
 }
-function exportCSV() {
+function exportCSV(){
   let csv = '';
   document.querySelectorAll('#playerTable tr').forEach(row => {
-    const cols = Array.from(row.querySelectorAll('th, td')).map(td => '"' + td.innerText.replace(/"/g, '""') + '"');
+    const cols = Array.from(row.querySelectorAll('th, td')).map(td => '\"'+td.innerText.replace(/\"/g,'\"\"')+'\"');
     csv += cols.join(',') + '\n';
   });
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const a = document.createElement('a');
+  const blob = new Blob([csv],{type:'text/csv'});
+  const a=document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'players_discords.csv';
+  a.download='players_discords.csv';
   a.click();
 }
 </script>
