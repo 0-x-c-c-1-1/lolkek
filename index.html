@@ -1,182 +1,73 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ники игроков — Discord (CROT)</title>
-<style>
-:root{--bg:#030405;--panel:#071014;--glass:rgba(8,12,16,0.6);--neon:#00ff7a;--muted:#6b808a}
-html,body{height:100%;margin:0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace,Roboto,Arial;background:linear-gradient(180deg,#000814 0%, #031022 60%);color:var(--neon);}
-canvas#matrix{position:fixed;inset:0;z-index:0;opacity:0.12;pointer-events:none}
-.wrap{position:relative;z-index:2;max-width:1100px;margin:28px auto;padding:28px}
-header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
-.logo{font-size:22px;letter-spacing:1px;padding:8px 12px;background:linear-gradient(90deg,rgba(0,0,0,0.25),rgba(255,255,255,0.02));border-radius:8px;border:1px solid rgba(0,255,122,0.12);box-shadow:0 6px 30px rgba(0,255,122,0.03) inset}
-h1{margin:0;font-weight:600;font-size:18px}
-.sub{color:var(--muted);font-size:12px}
-.panel{background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(255,255,255,0.01));border:1px solid rgba(0,255,122,0.08);padding:14px;border-radius:10px;backdrop-filter: blur(6px);box-shadow:0 8px 30px rgba(0,0,0,0.6)}
-.controls{display:flex;gap:8px;align-items:center;margin-bottom:12px}
-.search{flex:1;display:flex}
-input[type="search"]{width:100%;padding:10px 12px;background:transparent;border:1px solid rgba(0,255,122,0.12);color:var(--neon);outline:none;border-radius:8px;font-size:13px}
-.btn{padding:10px 12px;border-radius:8px;border:1px solid rgba(0,255,122,0.12);background:transparent;color:var(--neon);cursor:pointer;font-size:13px}
-.table-wrap{overflow:auto;max-height:60vh;border-radius:8px;margin-top:6px}
-table{width:100%;border-collapse:collapse;font-size:13px;color:var(--neon)}
-thead th{position:sticky;top:0;background:linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2));backdrop-filter: blur(4px);padding:12px;text-align:left;border-bottom:1px solid rgba(0,255,122,0.06);font-weight:600}
-tbody tr{border-bottom:1px dashed rgba(0,255,122,0.03)}
-td{padding:10px 12px;vertical-align:top}
-tr:hover td{background:linear-gradient(90deg, rgba(0,255,122,0.02), rgba(0,255,122,0.01))}
-.muted{color:var(--muted);font-size:12px}
-.tag{display:inline-block;padding:4px 8px;border-radius:999px;border:1px solid rgba(0,255,122,0.08);font-size:12px}
-.copy{margin-left:8px;padding:6px;border-radius:6px;cursor:pointer;background:rgba(0,0,0,0.25);border:1px solid rgba(0,255,122,0.06)}
-.glow{text-shadow:0 0 8px rgba(0,255,122,0.18)}
-footer{margin-top:12px;color:var(--muted);font-size:12px}
-@media (max-width:700px){thead th:nth-child(2){display:none} tbody td:nth-child(2){display:none}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crimson Rise</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<canvas id="matrix"></canvas>
-<div class="wrap">
-<header>
-<div class="logo glow">CROT-BD</div>
-<div>
-<h1>Ники игроков — Discord</h1>
-<div class="sub">Ники игроков из NLYS</div>
-</div>
-</header>
-<div class="panel">
-<div class="controls">
-<div class="search">
-<input id="q" type="search" placeholder="Поиск ника или discord..." autocomplete="off">
-</div>
-<button class="btn" id="export">Экспорт CSV</button>
-<button class="btn" id="dark">Тёмный</button>
-</div>
-<div class="table-wrap">
-<table id="list">
-<thead>
-<tr><th>Игровой ник</th><th>Discord ник</th></tr>
-</thead>
-<tbody></tbody>
-</table>
-</div>
-<footer>Подсказка: нажми кнопку «Копировать» рядом с Discord-ником, чтобы скопировать в буфер обмена.</footer>
-<footer style="margin-top:6px;color:var(--muted);font-size:12px;text-align:center;">
-2b2t.org.ru — все права принадлежат Mojang
-</footer>
-</div>
-</div>
-<script>
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
-let w,h,cols,ypos;
-function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;cols=Math.floor(w/20);ypos=new Array(cols).fill(0)}
-window.onresize=resize;resize();
-const letters='abcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()<>[]{}\\/|;:.,';
-function matrix(){
-ctx.fillStyle='rgba(0,0,0,0.06)';ctx.fillRect(0,0,w,h);
-ctx.fillStyle='rgba(0,255,122,0.9)';ctx.font='14pt monospace';
-for(let i=0;i<cols;i++){
-const text=letters.charAt(Math.floor(Math.random()*letters.length));
-ctx.fillText(text,i*20,ypos[i]*20);
-if(ypos[i]*20>h&&Math.random()>0.975)ypos[i]=0;
-ypos[i]++;
-}}
-setInterval(matrix,45);
+    <div class="container">
+        <header class="header">
+            <img src="logo.png" alt="Crimson Rise" class="logo">
+            <h1 class="clan-name">Crimson Rise</h1>
+            <div class="header-buttons">
+                <a href="https://discord.gg/NNsQqXVehk" class="join-btn" target="_blank">Присоединиться к серверу</a>
+            </div>
+        </header>
 
-const data=[
-{g:'prololro, IIuoneR_Original', d:'523516316732'},
-{g:'TheSheaker', d:'Шекер'},
-{g:'Slutgon42', d:'Шекер'},
-{g:'B3st1k, b3st1k_2, B3st1kStash, B3st1kStash2, B3st1kFireworks, B3st1kPodmostki, 0xCrash, Sudno, HAbJlIOdATEJlb', d:'✞ 𓆩₲ꝋꞡⱥ𓆪 ✞'},
-{g:'DASA_229_DASA, DarkMarket', d:'✞ 𓆩₲ꝋꞡⱥ𓆪 ✞'},
-{g:'dydykaya', d:'ded'},
-{g:'Oblivion_PvP_Bot, CKAMEP, ABTOPUTET, Cpvp0wner, kiberbuling, AntonPolikarpov6, playCODE80noDAPL, Drahok, AutoPearl, B0P0HA, TPAXOK, Kia, walleWTF, vixxO8, V_I_X_X_0_8, nlys_account1–8', d:'k-k-kkiber? ★'},
-{g:'Sperman, Fisting_Master, Sweety_Boy, DEGRODANT, Thunder_Shop, canUsee', d:'ded'},
-{g:'org_ru_test, org_ru_alt, ntoskrnl, igoshka', d:'Puparia #ПЛАЧЬ'},
-{g:'igoshka, igoshka429, 1goshka, igoshka_, igoshka__, IG0SHKA, BIG_RUSSIAN_BOSS, ashka, igashk, womana, womana1, womana2, LEPIT, GigPip', d:'igoshka'},
-{g:'goghop, doge_platinum721, goghop1, 10_10105, cumshot, MondayGlock_17, BensonBurnz, 291k', d:'Puparia #ПЛАЧЬ'},
-{g:'hxrvestik', d:'мiтя999'},
-{g:'nikitadan4pi, lixen1x', d:'nikitadan4pi'},
-{g:'zxcbitik', d:'ЗŷБêĤкØ Ми✖ÃиЛ ПęŦрØßиЧ'},
-{g:'bobby15490, chelove4ek', d:'Dead cock'},
-{g:'Iamsteve67', d:'Я ребёнок'},
-{g:'Manager, TOPMO3', d:'RononoaZoro'},
-{g:'ThomasShelby', d:'ThomasShelby'},
-{g:'daRGO', d:'Zip'},
-{g:'CTALIN2000, LENIN3000, ZELENSKY4000, PUTIN1000, ANTON9669, SHABIA9669, MistBear, ItsBear, ItzBear', d:'Жабя 🐸😺'},
-{g:'ilik550', d:'ilik550'},
-{g:'Strash2b2t, Strash2b2tru, Checkers, CrystalBou', d:'NEСЛУЧАЙНО-lonix🎃'},
-{g:'IShowMeat', d:'@Deleted User'},
-{g:'KHyaZb, TheShaverma, try_it88, try_itmain, p_p, nofreepst, netry_it, sozialism, Grogu', d:'Chelover'},
-{g:'Frezeld, dochka143, Slavikkop12', d:'—'},
-{g:'twincc1, twncc_, K4GC', d:'Павло Онищук'},
-{g:'DrugQueen', d:'ClasheR'},
-{g:'QuatroEspada, TheGreatDoggy, silverhand, Spidey, APP', d:'Гадание'},
-{g:'3umph, Shi0py4ka', d:'—'},
-{g:'ms_demian', d:'Greck Feck'},
-{g:'say0, rsnc', d:'sayo'},
-{g:'MaximCheatHvH2013', d:'—'},
-{g:'kickofu, schwarznegger, Minister', d:'министр'},
-{g:'tumup, _tumup_, firaceya', d:'t.me/invokedynamic'},
-{g:'шварцниггер', d:'министр'},
-{g:'Heoruzzz', d:'Батырхан Меирхан Еркебуланулы'},
-{g:'BypassPidoras', d:'министр'},
-{g:'pyzo007', d:'horble12'},
-{g:'EquilibriumNigas', d:'vethaer'},
-{g:'_vixx08_', d:'vixx08'},
-{g:'dert32, Mr_Baff', d:'ヤギを犯した'},
-{g:'Speedwagon, GiroyRBLX', d:'министр'},
-{g:'NoobRBLX, DOSTAVKA_RESOV1', d:'—'},
-{g:'iKibeR, ikiber', d:'iKibeR / мiтя999'},
-{g:'Pyzonator, dupeakkpyzo, cpvppyzotop1', d:'vethaer'},
-{g:'SpeedBypass, ipidor, nugger🤣', d:'министр'},
-{g:'BrainBypass', d:'министр'},
-{g:'vixx1488, vixx08Border', d:'викс'},
-{g:'Chmo54', d:'Dead cock'},
-{g:'ministrsinshluhi, hxrvestik, kazahsila', d:'мiтя999'},
-{g:'koshmish', d:'кощмищ'},
-{g:'ZloyLime, DobriyRusskiy, DobriyRossiyanin, DobriySlavyanin, DobriyPatriot, DobriyChelovek', d:'ZloyLime'},
-{g:'DobriyUkrainec, crowtheworst', d:'Upwardy'},
-{g:'stroheim', d:'ᛋᛋ'},
-{g:'NeverSheker', d:'Шекер'},
-{g:'Drahok', d:'banish'},
-{g:'omg_non', d:'Vethaer'},
-{g:'blyvhywannafly', d:'Blyvhy'},
-{g:'EsdeD12, nswp, EsdeD, N0_name228, prost1k336, Gamzik, Gamziik', d:'crowtheworst'},
-{g:'Pavel_Durov', d:'Pavel Durov'},
-{g:'сок86', d:'скибиди туалеты ==12=='}
-];
+        <main>
+            <article class="news-card">
+                <div class="news-header">
+                    <h2 class="news-title">Последние новости</h2>
+                    <div class="news-date">Актуально на момент: 13.11.2025</div>
+                </div>
+                
+                <div class="discord-links">
+                    <a href="https://discord.com/channels/1431662782885138444/1432408973956616403/1436759356107522189" class="discord-link" target="_blank">
+                        <svg class="discord-icon" viewBox="0 0 24 24" fill="#8b0000">
+                            <path d="M19.73 4.87a18.2 18.2 0 0 0-4.6-1.44c-.21.4-.4.8-.58 1.21-1.69-.25-3.4-.25-5.1 0-.18-.41-.37-.82-.59-1.21-1.6.27-3.14.75-4.6 1.44C2.2 9.13 1.5 13.28 1.64 17.43a18.2 18.2 0 0 0 5.49 2.73c.44-.6.83-1.24 1.17-1.9-.64-.24-1.25-.54-1.82-.9.15-.11.3-.23.44-.35 3.05 1.42 6.35 1.42 9.38 0 .14.12.29.24.44.35-.57.36-1.18.66-1.82.9.34.66.73 1.3 1.17 1.9a18.2 18.2 0 0 0 5.49-2.73c.2-4.71-.74-8.84-2.51-12.56zM8.7 15.12c-1.1 0-2-1.02-2-2.27 0-1.25.9-2.27 2-2.27 1.1 0 2 1.02 2 2.27 0 1.25-.89 2.27-2 2.27zm6.6 0c-1.1 0-2-1.02-2-2.27 0-1.25.9-2.27 2-2.27 1.1 0 2 1.02 2 2.27 0 1.25-.9 2.27-2 2.27z"/>
+                        </svg>
+                        <div class="link-info">
+                            <div class="link-title">Важное объявление</div>
+                            <div class="link-description">План на грядущую неделю: ивенты и проекты</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://discord.com/channels/1431662782885138444/1432408973956616403" class="discord-link" target="_blank">
+                        <svg class="discord-icon" viewBox="0 0 24 24" fill="#7289da">
+                            <path d="M19.73 4.87a18.2 18.2 0 0 0-4.6-1.44c-.21.4-.4.8-.58 1.21-1.69-.25-3.4-.25-5.1 0-.18-.41-.37-.82-.59-1.21-1.6.27-3.14.75-4.6 1.44C2.2 9.13 1.5 13.28 1.64 17.43a18.2 18.2 0 0 0 5.49 2.73c.44-.6.83-1.24 1.17-1.9-.64-.24-1.25-.54-1.82-.9.15-.11.3-.23.44-.35 3.05 1.42 6.35 1.42 9.38 0 .14.12.29.24.44.35-.57.36-1.18.66-1.82.9.34.66.73 1.3 1.17 1.9a18.2 18.2 0 0 0 5.49-2.73c.2-4.71-.74-8.84-2.51-12.56zM8.7 15.12c-1.1 0-2-1.02-2-2.27 0-1.25.9-2.27 2-2.27 1.1 0 2 1.02 2 2.27 0 1.25-.89 2.27-2 2.27zm6.6 0c-1.1 0-2-1.02-2-2.27 0-1.25.9-2.27 2-2.27 1.1 0 2 1.02 2 2.27 0 1.25-.9 2.27-2 2.27z"/>
+                        </svg>
+                        <div class="link-info">
+                            <div class="link-title">Канал новостей</div>
+                            <div class="link-description">Все основные объявления и новости клана</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://discord.gg/NNsQqXVehk" class="discord-link" target="_blank">
+                        <svg class="discord-icon" viewBox="0 0 24 24" fill="#7289da">
+                            <path d="M19.73 4.87a18.2 18.2 0 0 0-4.6-1.44c-.21.4-.4.8-.58 1.21-1.69-.25-3.4-.25-5.1 0-.18-.41-.37-.82-.59-1.21-1.6.27-3.14.75-4.6 1.44C2.2 9.13 1.5 13.28 1.64 17.43a18.2 18.2 0 0 0 5.49 2.73c.44-.6.83-1.24 1.17-1.9-.64-.24-1.25-.54-1.82-.9.15-.11.3-.23.44-.35 3.05 1.42 6.35 1.42 9.38 0 .14.12.29.24.44.35-.57.36-1.18.66-1.82.9.34.66.73 1.3 1.17 1.9a18.2 18.2 0 0 0 5.49-2.73c.2-4.71-.74-8.84-2.51-12.56zM8.7 15.12c-1.1 0-2-1.02-2-2.27 0-1.25.9-2.27 2-2.27 1.1 0 2 1.02 2 2.27 0 1.25-.89 2.27-2 2.27zm6.6 0c-1.1 0-2-1.02-2-2.27 0-1.25.9-2.27 2-2.27 1.1 0 2 1.02 2 2.27 0 1.25-.9 2.27-2 2.27z"/>
+                        </svg>
+                        <div class="link-info">
+                            <div class="link-title">Сервер Crimson Rise</div>
+                            <div class="link-description">Основной Discord сервер клана</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="discord-meta">
+                    <svg class="discord-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.73 4.87a18.2 18.2 0 0 0-4.6-1.44c-.21.4-.4.8-.58 1.21-1.69-.25-3.4-.25-5.1 0-.18-.41-.37-.82-.59-1.21-1.6.27-3.14.75-4.6 1.44C2.2 9.13 1.5 13.28 1.64 17.43a18.2 18.2 0 0 0 5.49 2.73c.44-.6.83-1.24 1.17-1.9-.64-.24-1.25-.54-1.82-.9.15-.11.3-.23.44-.35 3.05 1.42 6.35 1.42 9.38 0 .14.12.29.24.44.35-.57.36-1.18.66-1.82.9.34.66.73 1.3 1.17 1.9a18.2 18.2 0 0 0 5.49-2.73c.2-4.71-.74-8.84-2.51-12.56zM8.7 15.12c-1.1 0-2-1.02-2-2.27 0-1.25.9-2.27 2-2.27 1.1 0 2 1.02 2 2.27 0 1.25-.89 2.27-2 2.27zm6.6 0c-1.1 0-2-1.02-2-2.27 0-1.25.9-2.27 2-2.27 1.1 0 2 1.02 2 2.27 0 1.25-.9 2.27-2 2.27z"/>
+                    </svg>
+                    <span>Связано с Discord</span>
+                </div>
+            </article>
+        </main>
 
-const tbody=document.querySelector('#list tbody');
-function render(rows){
-tbody.innerHTML='';
-rows.forEach(item=>{
-const tr=document.createElement('tr');
-const td1=document.createElement('td'); td1.textContent=item.g;
-const td2=document.createElement('td');
-const span=document.createElement('span'); span.textContent=item.d; span.className='muted';
-const copy=document.createElement('button'); copy.className='copy'; copy.title='Копировать'; copy.innerText='Коп';
-copy.onclick=()=>{navigator.clipboard.writeText(item.d).then(()=>{copy.innerText='OK';setTimeout(()=>copy.innerText='Коп',900)})}
-td2.appendChild(span); td2.appendChild(copy);
-tr.appendChild(td1); tr.appendChild(td2); tbody.appendChild(tr);
-})}
-render(data);
-
-document.getElementById('q').addEventListener('input',e=>{
-const v=e.target.value.toLowerCase().trim();
-if(!v){render(data);return}
-const filtered=data.filter(x=>x.g.toLowerCase().includes(v)||x.d.toLowerCase().includes(v));
-render(filtered);
-});
-
-document.getElementById('export').addEventListener('click',()=>{
-const header='"Игровой ник","Discord ник"\n';
-const rows=data.map(r=>`"${r.g.replace(/"/g,'""')}","${r.d.replace(/"/g,'""')}"`).join('\n');
-const blob=new Blob([header+rows],{type:'text/csv;charset=utf-8;'});
-const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='players_discords.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
-});
-
-document.getElementById('dark').addEventListener('click',()=>{document.body.style.filter=document.body.style.filter?'':'invert(0.02) hue-rotate(120deg)';});
-</script>
+        <footer class="footer">
+            <p>Crimson Rise | 2b2t.org.ru</p>
+        </footer>
+    </div>
 </body>
 </html>
-
